@@ -42,8 +42,8 @@ export class WAThemeDesignerService {
           },
             header: {
                 "Background": this.getColorProperty('--header-background-color'),
-                "Color" : "#ffae23",
-                "ColorHover" : "#ffae23"
+                "Color" : this.getColorProperty('--header-color'),
+                "ColorHover" : this.getColorProperty('--header-color-hover')
             },
             Export: () =>{
               let test = this.getColorProperty('--header-background-color');
@@ -61,8 +61,8 @@ export class WAThemeDesignerService {
 
           this.createFolder(gui, 'Header', [
             { name: 'Background', variableName: '--header-background-color' },
-            { name: 'Color', variableName: '--headerColor' },
-            { name: 'ColorHover', variableName: '--headerColorHover' }
+            { name: 'Color', variableName: '--header-color' },
+            { name: 'ColorHover', variableName: '--header-color-hover' }
           ], this.obj.header);
 
 
@@ -73,10 +73,12 @@ export class WAThemeDesignerService {
     }
 
     private createFolder(gui:GUI, folderName:string, colors:ColorItemDef[], target: any){
-      let f1 = gui.addFolder(folderName);
+      let f_root = gui.addFolder("root_"+ folderName);
+      let f1 = f_root.addFolder(folderName);
       for (var i=0;i<colors.length;i++){
         let colorItemDef: ColorItemDef = colors[i];
         f1.addColor(target, colorItemDef.name).onChange((value) => {
+          this.logger.debug(LOG_TAG, 'Set variable name:',colorItemDef.variableName, value );
           this.themeWrapper.style.setProperty(colorItemDef.variableName, value);
         });
       }
