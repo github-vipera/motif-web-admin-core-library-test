@@ -52,14 +52,16 @@ export class WAThemeDesignerService {
             }
           };
 
-          this.createFolder(gui, 'Main', [
+          let mainFolder = this.createEmptyFolder(gui, "Main");
+
+          this.createFolder(mainFolder, 'Canvas', [
             { name: 'Background', variableName: '--mainBackgroundColor' },
             { name: 'Color', variableName: '--mainColor' },
             { name: 'Body', variableName: '--bodyBackgroundColor' },
             { name: 'Section', variableName: '--sectionBackgroundColor'}
           ], this.obj.main);
 
-          this.createFolder(gui, 'Header', [
+          this.createFolder(mainFolder, 'Header', [
             { name: 'Background', variableName: '--header-background-color' },
             { name: 'Color', variableName: '--header-color' },
             { name: 'ColorHover', variableName: '--header-color-hover' }
@@ -72,9 +74,12 @@ export class WAThemeDesignerService {
 
     }
 
+    private createEmptyFolder(gui: GUI, folderName: string): GUI {
+      return gui.addFolder(folderName);
+    }
+
     private createFolder(gui:GUI, folderName:string, colors:ColorItemDef[], target: any){
-      let f_root = gui.addFolder("root_"+ folderName);
-      let f1 = f_root.addFolder(folderName);
+      let f1 = gui.addFolder(folderName);
       for (var i=0;i<colors.length;i++){
         let colorItemDef: ColorItemDef = colors[i];
         f1.addColor(target, colorItemDef.name).onChange((value) => {
