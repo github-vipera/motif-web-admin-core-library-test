@@ -5,6 +5,8 @@ import { DOCUMENT } from '@angular/common';
 
 import * as dat from 'dat.gui'
 
+import * as ControlKit from 'controlkit'
+
 const LOG_TAG = '[WAThemeDesignerService]';
 
 interface ColorItemDef {
@@ -25,7 +27,7 @@ export class WAThemeDesignerService {
 
     private obj:any;
 
-    public show(){
+    public showDAT(){
         this.logger.debug(LOG_TAG, 'show called' );
 
         const gui: GUI = new dat.default.GUI({name: "Theme Designer", width: 400, closed: true, autoPlace: true, hideable:true });
@@ -35,7 +37,8 @@ export class WAThemeDesignerService {
 
         this.obj = {
           main: {
-            "Background": this.getColorProperty('--main-background-color')
+            "Background": this.getColorProperty('--main-background-color'),
+            "Title1" : this.getColorProperty('--title-1-color')
           },
             header: {
                 "Background": this.getColorProperty('--header-background-color'),
@@ -53,6 +56,7 @@ export class WAThemeDesignerService {
 
           this.createFolder(mainFolder, 'Canvas', [
             { name: 'Background', variableName: '--main-background-color' },
+            { name: 'Title1', variableName: '--title-1-color' },
           ], this.obj.main);
 
           this.createFolder(mainFolder, 'Header', [
@@ -87,6 +91,21 @@ export class WAThemeDesignerService {
       var style = getComputedStyle(this.themeWrapper);
       var ret = style.getPropertyValue(variableName).trim();
       return ret;
+    }
+
+    public show(){
+      var obj = {
+        number : 0,
+        string : 'abc',
+        color: '#ff00aa'
+    };
+      var controlKit = new ControlKit();
+	    controlKit.addPanel({ fixed: false, width: 400, label: "Theme Editor", dock: false, align: "right", position: [0,50]})
+	        .addGroup({label:'Main Colors'})
+	            .addSubGroup({label: 'Commons'})
+                  .addNumberInput(obj,'number')
+                  .addColor(obj,'color',{colorMode:'hex', label: 'Title 1 Color'})
+	                .addStringInput(obj,'string');
     }
 
 
