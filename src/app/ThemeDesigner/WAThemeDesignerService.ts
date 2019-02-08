@@ -31,6 +31,8 @@ export class WAThemeDesignerService {
         const gui: GUI = new dat.default.GUI({name: "Theme Designer", width: 400, closed: true, autoPlace: true, hideable:true });
         gui.useLocalStorage = true;
 
+        let colorStr = "#ffae23";//this.getColorProperty('--header-background-color');
+
         this.obj = {
           main: {
             "Background": "#ffae23",
@@ -39,11 +41,15 @@ export class WAThemeDesignerService {
             "Section" : "#ffae23"
           },
             header: {
-                "Background": "#ffae23",
+                "Background": this.getColorProperty('--header-background-color'),
                 "Color" : "#ffae23",
                 "ColorHover" : "#ffae23"
             },
-            Export: () =>{ alert("TODO!!"); console.log("this.obj:",this.obj)}
+            Export: () =>{
+              let test = this.getColorProperty('--header-background-color');
+              alert(test);
+              console.log("Color:",test)
+            }
           };
 
           this.createFolder(gui, 'Main', [
@@ -54,7 +60,7 @@ export class WAThemeDesignerService {
           ], this.obj.main);
 
           this.createFolder(gui, 'Header', [
-            { name: 'Background', variableName: '--headerBackground' },
+            { name: 'Background', variableName: '--header-background-color' },
             { name: 'Color', variableName: '--headerColor' },
             { name: 'ColorHover', variableName: '--headerColorHover' }
           ], this.obj.header);
@@ -76,10 +82,11 @@ export class WAThemeDesignerService {
       }
     }
 
-}
+    private getColorProperty(variableName: string): string {
+      var style = getComputedStyle(this.themeWrapper);
+      var ret = style.getPropertyValue(variableName).trim();
+      return ret;
+    }
 
-var FizzyText = function() {
-    this.message = 'dat.gui';
-    this.speed = 0.8;
-    this.displayOutline = true;
-};
+
+}
