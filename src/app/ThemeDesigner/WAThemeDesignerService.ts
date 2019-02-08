@@ -35,10 +35,7 @@ export class WAThemeDesignerService {
 
         this.obj = {
           main: {
-            "Background": "#ffae23",
-            "Color" : "#ffae23",
-            "Body" : "#ffae23",
-            "Section" : "#ffae23"
+            "Background": this.getColorProperty('--main-background-color')
           },
             header: {
                 "Background": this.getColorProperty('--header-background-color'),
@@ -55,10 +52,7 @@ export class WAThemeDesignerService {
           let mainFolder = this.createEmptyFolder(gui, "Main");
 
           this.createFolder(mainFolder, 'Canvas', [
-            { name: 'Background', variableName: '--mainBackgroundColor' },
-            { name: 'Color', variableName: '--mainColor' },
-            { name: 'Body', variableName: '--bodyBackgroundColor' },
-            { name: 'Section', variableName: '--sectionBackgroundColor'}
+            { name: 'Background', variableName: '--main-background-color' },
           ], this.obj.main);
 
           this.createFolder(mainFolder, 'Header', [
