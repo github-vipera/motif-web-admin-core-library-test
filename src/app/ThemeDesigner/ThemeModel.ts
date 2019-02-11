@@ -67,6 +67,7 @@ export class DefaultThemeModel implements ThemeModel {
     this.items.push(this.createMainGroup());
     this.items.push(this.createHeaderGroup());
     this.items.push(this.createFooterGroup());
+    this.items.push(this.createGridGroup());
   }
 
   private createMainGroup(): ThemeGroup {
@@ -107,6 +108,18 @@ export class DefaultThemeModel implements ThemeModel {
   }
 
 
+  private createGridGroup(): ThemeGroup {
+    let ret = new ThemeGroup();
+    ret.description = "Grid";
+    ret.items = [
+      // Grid Colors
+      this.createColorItem('grid', 'Grid Color', '--grid-color'),
+      this.createColorItem('grid', 'Grid Border Color', '--grid-border-color'),
+      this.createColorItem('grid', 'Grid Header Color', '--grid-header-color'),
+      this.createColorItem('grid', 'Grid Header Border', '--grid-header-border-color')
+    ];
+    return ret;
+  }
 
 
 
