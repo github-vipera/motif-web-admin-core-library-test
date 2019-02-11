@@ -119,7 +119,7 @@ export class WAThemeDesignerService {
     }
 
     private addThemeGroupTo(ui: any, group: ThemeGroup) {
-      let subUI = ui.addGroup( { label: group.description, enable: false } );
+      let subUI = ui.addSubGroup( { label: group.description, enable: false } );
       for (let i=0;i<group.items.length;i++){
         let item: ThemeItem = group.items[i];
         if (item instanceof ThemeGroup){

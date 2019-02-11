@@ -65,6 +65,8 @@ export class DefaultThemeModel implements ThemeModel {
 
   private createModel(){
     this.items.push(this.createMainGroup());
+    this.items.push(this.createHeaderGroup());
+    this.items.push(this.createFooterGroup());
   }
 
   private createMainGroup(): ThemeGroup {
@@ -74,15 +76,39 @@ export class DefaultThemeModel implements ThemeModel {
 
       // Main Colors
       this.createColorItem('background', 'Main Background', '--main-background-color'),
+        //Titles
+        this.createColorItem('background', 'Title 1 Color', '--title-1-color'),
+    ];
+    return ret;
+  }
 
+
+  private createHeaderGroup(): ThemeGroup {
+    let ret = new ThemeGroup();
+    ret.description = "Header";
+    ret.items = [
       // Header Colors
       this.createColorItem('header', 'Header Background', '--header-background-color'),
       this.createColorItem('header', 'Header Color', '--header-color'),
       this.createColorItem('header', 'Header Hover', '--header-color-hover')
-
     ];
     return ret;
   }
+
+  private createFooterGroup(): ThemeGroup {
+    let ret = new ThemeGroup();
+    ret.description = "Footer";
+    ret.items = [
+      // Footer Colors
+      this.createColorItem('footer', 'Footer Background', '--footer-background-color'),
+      this.createColorItem('footer', 'Footer Color', '--footer-color')
+    ];
+    return ret;
+  }
+
+
+
+
 
   private createColorItem(name: string, description:string, cssPropertyName: string): ThemeColorItem {
     return new ThemeColorItem(name, description, cssPropertyName, this.themeWrapper, this.logger);
