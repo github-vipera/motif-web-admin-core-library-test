@@ -23,7 +23,7 @@ export class WAThemeDesignerColorPicker {
   @ViewChild("op") overlayPanel: any;
   @ViewChild("pickerButton") pickerButton:ElementRef;
   @ViewChild("colorPanel") colorPanel:any;
-
+  @ViewChild("hiddenInput") hiddenInput:ElementRef;
   //public colorStr:string;
 
   constructor(){
@@ -88,7 +88,26 @@ export class WAThemeDesignerColorPicker {
   }
 
   onInputDblClick(event){
+    this.showPickerOverlay(event);
+  }
+
+  onPickerButtonClick(event){
+    /*
+    this.pickerButton.nativeElement.blur();
+    event.preventDefault();
+    event.stopPropagation();
+    */
+    this.showPickerOverlay(event);
+  }
+
+  private showPickerOverlay(event){
+    this.hiddenInput.nativeElement.focus();
     this.overlayPanel.show(event, this.pickerButton.nativeElement);
   }
+
+  onHiddenInputBlur(event){
+    this.overlayPanel.hide();
+  }
+
 
 }

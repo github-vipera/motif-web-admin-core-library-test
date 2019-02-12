@@ -43,3 +43,12 @@
     color: #aeb5b8;
     text-shadow: 1px 1px #000;
 }
+
+.wa-theme-editor-color-picker-control-hidden-input {
+  width: 0px;
+    height: 0px;
+    position: absolute;
+    left: -100x;
+    top: -100px;
+    opacity: 0;
+}

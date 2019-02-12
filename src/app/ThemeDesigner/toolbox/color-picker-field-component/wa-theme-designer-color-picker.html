@@ -3,10 +3,12 @@
 
   <a class="wa-theme-editor-color-picker-control-label">{{label}}</a>
 
-  <wa-theme-designer-color-picker-input-field style="width: 100%;" [color]="colorRaw" [text]="color" (dblclick)="onInputDblClick()">
+  <wa-theme-designer-color-picker-input-field style="width: 100%;" [color]="colorRaw" [text]="color" (dblclick)="onInputDblClick($event)">
   </wa-theme-designer-color-picker-input-field>
 
-  <button #pickerButton (click)="op.toggle($event)" class="wa-theme-editor-color-picker-button">...</button>
+  <button #pickerButton (click)="onPickerButtonClick($event)" class="wa-theme-editor-color-picker-button">...</button>
+
+  <input readonly type="text" #hiddenInput (blur)="onHiddenInputBlur($event)" class="wa-theme-editor-color-picker-control-hidden-input">
 
 </div>
 
@@ -15,6 +17,7 @@
                   [dismissable]="false"
                   [showCloseIcon]="true"
                   [styleClass]="'wa-theme-editor-color-picker-overlay'"
+
                   >
     <color-chrome #colorPanel [color]="color" (onChange)="handleChange($event)"></color-chrome>
 </p-overlayPanel>

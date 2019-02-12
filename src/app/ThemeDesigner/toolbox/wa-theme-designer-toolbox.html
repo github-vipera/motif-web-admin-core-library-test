@@ -1,7 +1,7 @@
 
   <p-dialog header="Title" [(visible)]="display" id="wa-theme-editor-toolbox-element" [styleClass]="'wa-theme-editor-toolbox'">
 
-      <p-accordion class="wa-theme-editor-toolbox-accordion">
+      <p-accordion class="wa-theme-editor-toolbox-accordion" [multiple]="true">
 
           <p-accordionTab header="Header 1">
           </p-accordionTab>
@@ -18,8 +18,13 @@
             </p-accordionTab>
 
           <p-accordionTab header="Header 3">
-              Content 3
-          </p-accordionTab>
+              <div class="wa-theme-designer-toolbox-item">
+                  <wa-theme-designer-color-picker [label]="'Background Color'" [color]="'rgba(20,20,156, 0.4)'" style="width:150px;"></wa-theme-designer-color-picker>
+              </div>
+              <div class="wa-theme-designer-toolbox-item">
+                  <wa-theme-designer-color-picker [label]="'Text Color'" [color]="'blue'" style="width:150px;"></wa-theme-designer-color-picker>
+              </div>
+            </p-accordionTab>
 
       </p-accordion>
 
