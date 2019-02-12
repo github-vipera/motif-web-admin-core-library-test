@@ -69,3 +69,13 @@ p-dialog .ui-dialog {
 #wa-theme-editor-container .ui-overlaypanel-content {
   padding: 0px;
 }
+
+.wa-theme-editor-toolbox-accordion .ui-accordion .ui-accordion-content {
+  padding: 0px !important;
+}
+
+.wa-theme-designer-toolbox-item {
+  padding: 8px;
+  background-color: #2c2d2d;
+  border-bottom: 1px solid #222729;
+}
