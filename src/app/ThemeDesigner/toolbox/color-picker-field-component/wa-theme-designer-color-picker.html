@@ -1,6 +1,8 @@
 
 <div class="wa-theme-editor-color-picker-control">
 
+  <a class="wa-theme-editor-color-picker-control-label">{{label}}</a>
+
   <wa-theme-designer-color-picker-input-field style="width: 100%;" [color]="colorRaw" [text]="color" (dblclick)="onInputDblClick()">
   </wa-theme-designer-color-picker-input-field>
 
@@ -14,6 +16,6 @@
                   [showCloseIcon]="true"
                   [styleClass]="'wa-theme-editor-color-picker-overlay'"
                   >
-    <color-chrome #colorPanel  color="(colorRaw ? colorRaw : colorString)" (onChange)="handleChange($event)"></color-chrome>
+    <color-chrome #colorPanel [color]="color" (onChange)="handleChange($event)"></color-chrome>
 </p-overlayPanel>
 

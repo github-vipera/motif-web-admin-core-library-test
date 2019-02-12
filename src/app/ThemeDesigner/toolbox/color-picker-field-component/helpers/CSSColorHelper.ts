@@ -22,6 +22,9 @@ export class CSSColorHelper {
   }
 
   private static invertColorHex(hex, bw) {
+    if (hex && hex.length > 7){
+      hex = hex.substring(0, 7);
+    }
     if (hex.indexOf('#') === 0) {
         hex = hex.slice(1);
     }
