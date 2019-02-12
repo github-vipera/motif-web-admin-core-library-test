@@ -18,6 +18,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.topBarService.registerItem(new WCTopBarItem('mainMenu', TopMenuComponent));
+    this.themeEditorService.show();
   }
 
 
@@ -25,7 +26,6 @@ export class AppComponent {
   }
 
   ngAfterContentInit() {
-    this.themeEditorService.show();
   }
 
 }

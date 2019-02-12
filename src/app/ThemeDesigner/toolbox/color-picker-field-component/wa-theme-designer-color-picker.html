@@ -1,0 +1,15 @@
+
+<div class="wa-theme-editor-color-picker-control">
+
+  <wa-theme-designer-color-picker-input-field style="width: 100%;" [color]="colorRaw">
+
+  </wa-theme-designer-color-picker-input-field>
+
+  <button (click)="op.toggle($event)" class="wa-theme-editor-color-picker-button">...</button>
+
+</div>
+
+<p-overlayPanel appendTo="body" #op [style]="{padding:'0px'}">
+    <color-chrome color="color" (onChange)="handleChange($event)"></color-chrome>
+</p-overlayPanel>
+

@@ -1,5 +1,6 @@
+import { WAThemeDesignerToolbox } from './toolbox/WAThemeDesignerToolbox';
 import { ThemeModelBuilder, ThemeModel, ThemeItem, ThemeGroup, ThemeColorItem } from './ThemeModel';
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, Injector, ApplicationRef, ComponentFactoryResolver } from '@angular/core';
 import { NGXLogger } from 'web-console-core';
 import { GUI } from "dat-gui";
 import { DOCUMENT } from '@angular/common';
@@ -21,7 +22,11 @@ export class WAThemeDesignerService {
   private themeWrapper: any;
   private themeModel: ThemeModel;
 
-    constructor(private logger: NGXLogger, @Inject(DOCUMENT) private document: any){
+    constructor(private logger: NGXLogger, @Inject(DOCUMENT) private document: any,
+      private resolver: ComponentFactoryResolver,
+      private injector: Injector,
+      private app: ApplicationRef
+    ){
       console.log("@Inject(DOCUMENT) private document ", document);
       this.themeWrapper = this.document.querySelector('app-root');
       console.log("this.themeWrapper:", this.themeWrapper);
@@ -99,7 +104,7 @@ export class WAThemeDesignerService {
       return ret;
     }
 
-    public show(){
+    public showControljs(){
         this.themeModel = new ThemeModelBuilder(this.logger, this.document).createModel();
         this.logger.debug(LOG_TAG, 'ThemeModelBuilder new model:',this.themeModel);
         let controlKit = new ControlKit({opacity:0.8 });
@@ -131,10 +136,19 @@ export class WAThemeDesignerService {
     }
 
     private addColorTo(ui: any, colorItem: ThemeColorItem) {
-      ui.addColor(colorItem, 'value', { colorMode:'hex', label: colorItem.description });
+      ui.addColor(colorItem, 'value', { colorMode:'hex', label: colorItem.description, presets: 'presets' });
     }
 
 
+    public show(){
+      let factory = this.resolver.resolveComponentFactory(WAThemeDesignerToolbox);
+      let newNode = document.createElement('div');
+      newNode.id = 'wa-theme-editor-container';
+      this.document.body.appendChild(newNode);
+      const ref = factory.create(this.injector, [], newNode);
+      this.app.attachView(ref.hostView);
+      this.showControljs();
+    }
 
 }
 

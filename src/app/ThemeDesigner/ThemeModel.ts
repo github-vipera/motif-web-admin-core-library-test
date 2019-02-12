@@ -21,6 +21,8 @@ export class ThemeColorItem implements ThemeItem {
 
   private _value: string;
 
+  public presets = [ '#00000000'];
+
   constructor(public name: string,
     public description: string,
     public cssPropertyName: string,
@@ -113,6 +115,7 @@ export class DefaultThemeModel implements ThemeModel {
     ret.description = "Grid";
     ret.items = [
       // Grid Colors
+      this.createColorItem('grid', 'Grid Background', '--grid-background-color'),
       this.createColorItem('grid', 'Grid Color', '--grid-color'),
       this.createColorItem('grid', 'Grid Border Color', '--grid-border-color'),
       this.createColorItem('grid', 'Grid Header Color', '--grid-header-color'),

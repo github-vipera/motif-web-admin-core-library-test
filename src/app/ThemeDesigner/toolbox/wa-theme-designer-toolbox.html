@@ -1,0 +1,29 @@
+
+  <p-dialog header="Title" [(visible)]="display" id="wa-theme-editor-toolbox-element" [styleClass]="myClassName">
+      <p-accordion>
+          <p-accordionTab header="Header 1">
+
+
+
+          </p-accordionTab>
+          <p-accordionTab header="Header 2">
+            <wa-theme-designer-color-picker></wa-theme-designer-color-picker>
+              <!--
+              <div class="ui-inputgroup">
+                  <input type="text" pInputText placeholder="Keyword">
+                  <button pButton type="button" icon="fa fa-superpowers" class="ui-button-warn" (click)="op.toggle($event)"></button>
+              </div>
+              -->
+            </p-accordionTab>
+          <p-accordionTab header="Header 3">
+              Content 3
+          </p-accordionTab>
+      </p-accordion>
+
+  </p-dialog>
+
+<!--
+  <p-overlayPanel #op [style]="{padding:'0px'}">
+      <color-chrome color="#fff"></color-chrome>
+  </p-overlayPanel>
+-->
