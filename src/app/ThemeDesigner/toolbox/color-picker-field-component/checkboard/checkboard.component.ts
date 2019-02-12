@@ -46,10 +46,11 @@ export class CheckboardComponent implements OnInit {
     };
   }
 }
-
+/*
 @NgModule({
   declarations: [CheckboardComponent],
   exports: [CheckboardComponent],
   imports: [CommonModule],
 })
 export class CheckboardModule {}
+*/

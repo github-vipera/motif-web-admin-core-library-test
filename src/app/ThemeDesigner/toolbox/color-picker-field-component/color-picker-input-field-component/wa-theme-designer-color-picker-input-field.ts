@@ -33,7 +33,7 @@ export class WAThemeDesignerColorPickerInputField {
     return CSSColorHelper.toCSSString(this.color);
   }
 
-  private get textColorCSS(): string {
+  public get textColorCSS(): string {
     return CSSColorHelper.invertColor(this.color);
   }
 
