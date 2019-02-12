@@ -2,6 +2,7 @@ import { CSSColorHelper } from './helpers/CSSColorHelper';
 import { Component, ViewEncapsulation, ViewChild, Output, Input, ElementRef } from '@angular/core';
 import { ColorEvent, Color,  RGBA } from 'ngx-color';
 import * as __color_string from 'color-string';
+import { ThemeColorItem } from '../../ThemeModel';
 //import { ChromeComponent } from 'ngx-color/chrome/chrome.component//';
 
 
@@ -24,7 +25,8 @@ export class WAThemeDesignerColorPicker {
   @ViewChild("pickerButton") pickerButton:ElementRef;
   @ViewChild("colorPanel") colorPanel:any;
   @ViewChild("hiddenInput") hiddenInput:ElementRef;
-  //public colorStr:string;
+
+  @Input() colorItem: ThemeColorItem;
 
   constructor(){
   }
@@ -38,6 +40,9 @@ export class WAThemeDesignerColorPicker {
 
   handleChange($event: ColorEvent) {
     this.colorRaw = $event.color;
+    if (this.colorItem){
+      this.colorItem.value = this.color;
+    }
   }
 
   public get color():string {

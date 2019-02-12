@@ -22,14 +22,14 @@
 
 $wa-theme-editor-toolbox-border-radius: 3px;
 
-
+/*
 .wa-theme-editor-toolbox .ui-dialog {
   opacity: 0.8 !important;
 }
+*/
 
 p-dialog .ui-dialog {
   border-radius: $wa-theme-editor-toolbox-border-radius !important;
-  opacity: 0.8 !important;
 }
 
 .wa-theme-editor-toolbox .ui-dialog-titlebar {

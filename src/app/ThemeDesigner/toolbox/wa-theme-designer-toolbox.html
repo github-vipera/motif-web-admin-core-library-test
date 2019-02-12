@@ -6,7 +6,7 @@
           <p-accordionTab *ngFor="let item of themeModel.items"  header="{{item.description}}">
 
               <div *ngFor="let colorItem of item.items"  class="wa-theme-designer-toolbox-item" >
-                  <wa-theme-designer-color-picker [label]="colorItem.description" [color]="colorItem.value" style="width:150px;"></wa-theme-designer-color-picker>
+                  <wa-theme-designer-color-picker [colorItem]="colorItem" [label]="colorItem.description" [color]="colorItem.value" style="width:150px;"></wa-theme-designer-color-picker>
               </div>
 
           </p-accordionTab>

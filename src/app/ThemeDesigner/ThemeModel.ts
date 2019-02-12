@@ -38,6 +38,7 @@ export class ThemeColorItem implements ThemeItem {
   public set value(colorValue:string) {
     this._value = colorValue;
     this.themeWrapper.style.setProperty(this.cssPropertyName, colorValue);
+    //console.log(">>>>> Set color value: ", colorValue);
   }
 
   private getColorProperty(variableName: string): string {
@@ -143,7 +144,7 @@ export class ThemeModelBuilder {
 
     public createModel(): ThemeModel {
       let model: ThemeModel = new DefaultThemeModel(this.logger, this.document);
-      console.log("createModel :", model);
+      //console.log("createModel :", model);
       return model;
     }
 

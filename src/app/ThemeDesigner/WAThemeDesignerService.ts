@@ -147,7 +147,7 @@ export class WAThemeDesignerService {
       this.document.body.appendChild(newNode);
       const ref = factory.create(this.injector, [], newNode);
       this.app.attachView(ref.hostView);
-      this.showControljs();
+      //this.showControljs();
     }
 
 }
