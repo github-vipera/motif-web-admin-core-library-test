@@ -1,8 +1,7 @@
-import { Component, ViewEncapsulation, ViewChild, Output, Input } from '@angular/core';
+import { ElementRect } from '@progress/kendo-popup-common';
+import { CSSColorHelper } from './helpers/CSSColorHelper';
+import { Component, ViewEncapsulation, ViewChild, Output, Input, ElementRef } from '@angular/core';
 import { ColorEvent, Color,  RGBA } from 'ngx-color';
-import * as __color_parse from 'color-parse';
-const color_parse = __color_parse;
-
 
 @Component({
   selector: 'wa-theme-designer-color-picker',
@@ -14,9 +13,8 @@ export class WAThemeDesignerColorPicker {
 
   @Input() @Output() color: Color;
 
-  private _colorCSS: string;
-
   @ViewChild("op") overlayPanel: any;
+  @ViewChild("pickerButton") pickerButton:ElementRef;
 
   constructor(){
   }
@@ -29,18 +27,21 @@ export class WAThemeDesignerColorPicker {
   }
 
   handleChange($event: ColorEvent) {
-    console.log("Color event: ", $event);
     this.color = $event.color;
-    this.colorCSS = $event.color.hex;
   }
 
   @Output()
   public get colorCSS():string {
-    return "";
+    return CSSColorHelper.toCSSString(this.color);
   }
 
   public set colorCSS(value:string) {
-    color_parse(value);
+    //color_parse(value);
   }
+
+  onInputDblClick(event){
+    this.overlayPanel.show(event, this.pickerButton.nativeElement);
+  }
+
 
 }
