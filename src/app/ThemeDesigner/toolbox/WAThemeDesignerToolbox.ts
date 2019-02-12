@@ -1,4 +1,7 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { DefaultThemeModel, ThemeModelBuilder, ThemeModel } from './../ThemeModel';
+import { Component, Input, ViewEncapsulation, Inject } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
+import { DOCUMENT } from '@angular/common';
 
 
 @Component({
@@ -13,10 +16,14 @@ export class WAThemeDesignerToolbox {
   display = true;
   myClassName = "wa-theme-editor-toolbox";
 
-  constructor(){
+  @Input() themeModel: ThemeModel;// = new ThemeModelBuilder().createModel();
+
+  constructor(private logger: NGXLogger, @Inject(DOCUMENT) private document: any){
+
   }
 
   ngOnInit() {
+    this.themeModel = new ThemeModelBuilder(this.logger, this.document).createModel();
   }
 
 

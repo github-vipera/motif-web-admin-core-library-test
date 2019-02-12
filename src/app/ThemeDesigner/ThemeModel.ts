@@ -59,10 +59,8 @@ export class DefaultThemeModel implements ThemeModel {
 
   constructor(private logger: NGXLogger, private document: any){
     this.logger.debug(LOG_TAG, 'Initializing' );
-    console.log("@Inject(DOCUMENT) private document ", document);
     this.themeWrapper = this.document.querySelector('app-root');
     this.createModel();
-    console.log("this.themeWrapper:", this.themeWrapper);
   }
 
   private createModel(){
@@ -136,7 +134,6 @@ export class DefaultThemeModel implements ThemeModel {
 import { Inject, destroyPlatform } from '@angular/core';
 import { NGXLogger } from 'web-console-core';
 import { DOCUMENT } from '@angular/common';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 export class ThemeModelBuilder {
 
@@ -146,6 +143,7 @@ export class ThemeModelBuilder {
 
     public createModel(): ThemeModel {
       let model: ThemeModel = new DefaultThemeModel(this.logger, this.document);
+      console.log("createModel :", model);
       return model;
     }
 

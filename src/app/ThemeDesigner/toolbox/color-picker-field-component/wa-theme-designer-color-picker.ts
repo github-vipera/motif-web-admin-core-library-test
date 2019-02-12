@@ -52,7 +52,6 @@ export class WAThemeDesignerColorPicker {
       let hexValue = colorString.to.hex(colorComp.value);
       let rgbaValue = colorString.to.rgb(colorComp.value);
       let hslValue = colorString.to.hsl(colorComp.value);
-      console.log(">>>> SET COLOR ", value, hexValue, rgbaValue, hslValue);
       this.colorRaw = {
         hex: hexValue,
         rgb: {

@@ -27,9 +27,9 @@ export class WAThemeDesignerService {
       private injector: Injector,
       private app: ApplicationRef
     ){
-      console.log("@Inject(DOCUMENT) private document ", document);
+      this.logger.debug("@Inject(DOCUMENT) private document ", document);
       this.themeWrapper = this.document.querySelector('app-root');
-      console.log("this.themeWrapper:", this.themeWrapper);
+      this.logger.debug("this.themeWrapper:", this.themeWrapper);
     }
 
     private obj:any;
