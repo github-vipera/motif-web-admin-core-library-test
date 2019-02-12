@@ -1,5 +1,7 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, Output, Input } from '@angular/core';
 import { ColorEvent, Color,  RGBA } from 'ngx-color';
+import * as __color_parse from 'color-parse';
+const color_parse = __color_parse;
 
 
 @Component({
@@ -10,8 +12,9 @@ import { ColorEvent, Color,  RGBA } from 'ngx-color';
 })
 export class WAThemeDesignerColorPicker {
 
-  color:string = "#ff00ff";
-  colorRaw: Color;
+  @Input() @Output() color: Color;
+
+  private _colorCSS: string;
 
   @ViewChild("op") overlayPanel: any;
 
@@ -27,8 +30,17 @@ export class WAThemeDesignerColorPicker {
 
   handleChange($event: ColorEvent) {
     console.log("Color event: ", $event);
-    this.colorRaw = $event.color;
-    this.color = $event.color.hex;
+    this.color = $event.color;
+    this.colorCSS = $event.color.hex;
+  }
+
+  @Output()
+  public get colorCSS():string {
+    return "";
+  }
+
+  public set colorCSS(value:string) {
+    color_parse(value);
   }
 
 }

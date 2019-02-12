@@ -1,42 +1,27 @@
-import { CSSColorHelper } from '../helpers/CSSColorHelper';
-import { Component, OnInit, OnDestroy, ViewEncapsulation, ViewChild, Input, Output } from '@angular/core';
-import { ColorEvent, Color } from 'ngx-color';
 import * as __color_parse from 'color-parse';
 const color_parse = __color_parse;
+import { Color } from 'ngx-color';
 
-@Component({
-  selector: 'wa-theme-designer-color-picker-input-field',
-  templateUrl: './wa-theme-designer-color-picker-input-field.html',
-  styleUrls: ['./wa-theme-designer-color-picker-input-field.scss'],
-  encapsulation: ViewEncapsulation.None
-})
-export class WAThemeDesignerColorPickerInputField {
 
-  @Output() @Input() color: Color;
+export class CSSColorHelper {
 
-  constructor(){
+  public static toCSSString(color: Color):string {
+    return CSSColorHelper.toCSSValue(color);
   }
 
-  ngOnInit() {
+  public static fromCSSString(value:string){
+    return color_parse(value);
   }
 
-
-  ngOnDestroy() {
+  public static invertColor(color: Color): string {
+    if (color){
+      return CSSColorHelper.invertColorHex(color.hex, true);
+    } else {
+      return "#ddd";
+    }
   }
 
-  public get colorStr(): string {
-    return this.colorCSS;
-  }
-
-  public get colorCSS(): string {
-    return CSSColorHelper.toCSSString(this.color);
-  }
-
-  private get textColorCSS(): string {
-    return CSSColorHelper.invertColor(this.color);
-  }
-
-  private invertColor(hex, bw) {
+  private static invertColorHex(hex, bw) {
     if (hex.indexOf('#') === 0) {
         hex = hex.slice(1);
     }
@@ -64,10 +49,31 @@ export class WAThemeDesignerColorPickerInputField {
     return "#" + this.padZero(r1) + this.padZero(g1) + this.padZero(b1);
   }
 
-  private padZero(str:string, len?:number):string {
+  private  static padZero(str:string, len?:number):string {
     len = len || 2;
     var zeros = new Array(len).join('0');
     return (zeros + str).slice(-len);
   }
+
+  private static toCSSValue(color: Color):string {
+    if (color){
+      if (color.rgb.a===1){
+        return this.toHexValue(color);
+      } else {
+        return this.toRGBAValue(color);
+      }
+    } else {
+      return "";
+    }
+  }
+
+  private static toHexValue(color: Color):string {
+    return color.hex;
+  }
+
+  private static toRGBAValue(color: Color):string {
+    return "rgba("+ color.rgb.r + "," + color.rgb.g +"," + color.rgb.b +", " + color.rgb.a +")";
+  }
+
 
 }

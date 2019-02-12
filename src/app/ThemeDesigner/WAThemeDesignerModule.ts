@@ -1,6 +1,6 @@
 import { WAThemeDesignerColorPickerInputField } from './toolbox/color-picker-field-component/color-picker-input-field-component/wa-theme-designer-color-picker-input-field';
 import { CommonModule } from '@angular/common';
-import { CheckboardComponent } from './toolbox/color-picker-field-component/checkboard.component';
+import { CheckboardComponent } from './toolbox/color-picker-field-component/checkboard/checkboard.component';
 import { WAThemeDesignerColorPicker } from './toolbox/color-picker-field-component/wa-theme-designer-color-picker';
 import { WAThemeDesignerToolbox } from './toolbox/WAThemeDesignerToolbox';
 import { WAThemeDesignerService } from './WAThemeDesignerService';
