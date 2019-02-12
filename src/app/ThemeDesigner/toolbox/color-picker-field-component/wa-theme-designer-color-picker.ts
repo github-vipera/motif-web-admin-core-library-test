@@ -92,11 +92,6 @@ export class WAThemeDesignerColorPicker {
   }
 
   onPickerButtonClick(event){
-    /*
-    this.pickerButton.nativeElement.blur();
-    event.preventDefault();
-    event.stopPropagation();
-    */
     this.showPickerOverlay(event);
   }
 
