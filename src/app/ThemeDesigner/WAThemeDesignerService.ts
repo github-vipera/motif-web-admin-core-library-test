@@ -38,9 +38,24 @@ export class WAThemeDesignerService {
         this.logger.debug(LOG_TAG, 'show called' );
 
         const gui: GUI = new dat.default.GUI({name: "Theme Designer", width: 400, closed: true, autoPlace: true, hideable:true });
-        gui.useLocalStorage = true;
+        var palette = {
+          color1: '#FF0000', // CSS string
+          color2: [ 0, 128, 255 ], // RGB array
+          color3: [ 0, 128, 255, 0.3 ], // RGB with alpha
+          color4: { h: 350, s: 0.9, v: 0.3 } // Hue, saturation, value
+        };
+        gui.addColor(palette, 'color1');
+        gui.addColor(palette, 'color2');
+        gui.addColor(palette, 'color3');
+        gui.addColor(palette, 'color4');
+
+        /*
+        //gui.useLocalStorage = true;
 
         let colorStr = "#ffae23";//this.getColorProperty('--header-background-color');
+        let alphaColorObj = {
+          colorWithAlpha: [ 100,0,150, 0.5]
+        };
 
         this.obj = this.createThemeObject();
 
@@ -54,12 +69,12 @@ export class WAThemeDesignerService {
           this.createFolder(mainFolder, 'Header', [
             { name: 'Background', variableName: '--header-background-color' },
             { name: 'Color', variableName: '--header-color' },
-            { name: 'ColorHover', variableName: '--header-color-hover' }
+            { name: 'ColorHover', variableName: '--header-color-hover' },
+            { name: 'TestAlpha', variableName: '--header-color-test' }
           ], this.obj.header);
 
-
           gui.add(this.obj, "Export");
-
+          */
           this.logger.debug(LOG_TAG, 'show done' );
 
     }
