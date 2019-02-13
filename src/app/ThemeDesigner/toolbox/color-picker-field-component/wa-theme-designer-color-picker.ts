@@ -1,3 +1,4 @@
+import { WAThemeDesignerClipboardService } from './../WAThemeDesignerClipboardService';
 import { CSSColorHelper } from './helpers/CSSColorHelper';
 import { Component, ViewEncapsulation, ViewChild, Output, Input, ElementRef } from '@angular/core';
 import { ColorEvent, Color,  RGBA } from 'ngx-color';
@@ -26,7 +27,7 @@ export class WAThemeDesignerColorPicker {
 
   @Input() colorItem: ThemeColorItem;
 
-  constructor(){
+  constructor(private clipboardService: WAThemeDesignerClipboardService){
   }
 
   ngOnInit() {
@@ -38,9 +39,7 @@ export class WAThemeDesignerColorPicker {
 
   handleChange($event: ColorEvent) {
     this.colorRaw = $event.color;
-    if (this.colorItem){
-      this.colorItem.value = this.color;
-    }
+    this.fireChanges();
   }
 
   public get color():string {
@@ -79,6 +78,7 @@ export class WAThemeDesignerColorPicker {
         source: ""
       }
     }
+    this.fireChanges();
   }
 
   public get hex():string {
@@ -116,11 +116,19 @@ export class WAThemeDesignerColorPicker {
   }
 
   onPickerCopyButtonClick(event){
-    //TODO!!
+    this.clipboardService.setValue(this.color);
   }
 
   onPickerPasteButtonClick(event){
-    //TODO!!
+    if (this.clipboardService.getValue() && this.clipboardService.getValue().length>0){
+      this.color = this.clipboardService.getValue();
+    }
+  }
+
+  private fireChanges(){
+    if (this.colorItem){
+      this.colorItem.value = this.color;
+    }
   }
 
 }

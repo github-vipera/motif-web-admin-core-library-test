@@ -1,3 +1,4 @@
+import { WAThemeDesignerClipboardService } from './toolbox/WAThemeDesignerClipboardService';
 import { WAThemeDesignerColorPickerInputField } from './toolbox/color-picker-field-component/color-picker-input-field-component/wa-theme-designer-color-picker-input-field';
 import { CommonModule } from '@angular/common';
 import { CheckboardComponent } from './toolbox/color-picker-field-component/checkboard/checkboard.component';
@@ -36,7 +37,7 @@ import { FormsModule }    from '@angular/forms'
     ],
     exports: [ ],
     providers: [
-        WAThemeDesignerService
+        WAThemeDesignerService, WAThemeDesignerClipboardService
     ]
 
   })
