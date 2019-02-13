@@ -1,5 +1,7 @@
 
-  <p-dialog header="Title" [(visible)]="display" id="wa-theme-editor-toolbox-element" [styleClass]="'wa-theme-editor-toolbox'" [style]="{width: '450px' }">
+  <p-dialog header="Title" [(visible)]="display" id="wa-theme-editor-toolbox-element" [styleClass]="'wa-theme-editor-toolbox'" [contentStyle]="{ 'display': 'flex', 'flex-direction': 'column' }" [style]="{width: '450px' }">
+
+      <div style="overflow: hidden;">
 
       <p-accordion class="wa-theme-editor-toolbox-accordion" [multiple]="true">
 
@@ -11,7 +13,17 @@
 
           </p-accordionTab>
 
-        <!--
+      </p-accordion>
+
+    </div>
+
+      <div class="wa-theme-designer-toolbox-bottom-toolbar">
+        <button class="wa-theme-designer-toolbox-bottom-toolbar-button" (click)="onDownloadClick($event)">Download</button>
+      </div>
+
+  </p-dialog>
+
+       <!--
           <p-accordionTab header="Header 1">
           </p-accordionTab>
 
@@ -35,10 +47,3 @@
               </div>
             </p-accordionTab>
           -->
-
-
-
-      </p-accordion>
-
-  </p-dialog>
-

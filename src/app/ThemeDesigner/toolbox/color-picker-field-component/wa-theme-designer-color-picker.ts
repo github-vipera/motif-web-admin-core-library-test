@@ -16,7 +16,7 @@ const colorString = __color_string;
 })
 export class WAThemeDesignerColorPicker {
 
-  @Input() @Output() colorRaw: Color;
+  colorRaw: Color;
 
   @Input() label:string;
 
@@ -130,5 +130,6 @@ export class WAThemeDesignerColorPicker {
       this.colorItem.value = this.color;
     }
   }
+
 
 }
