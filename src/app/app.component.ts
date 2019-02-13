@@ -12,8 +12,8 @@ export class AppComponent {
   title = 'motif-web-admin-core-library-test';
 
   constructor(private topBarService: WCTopBarService,
-              private authService: AuthService,
-              private themeEditorService: WAThemeDesignerService){
+              private authService: AuthService
+              ,private themeEditorService: WAThemeDesignerService){
   }
 
   ngOnInit() {

@@ -66,6 +66,7 @@ export class DefaultThemeModel implements ThemeModel {
 
   private createModel(){
     this.items.push(this.createMainGroup());
+    this.items.push(this.createToolbarGroup());
     this.items.push(this.createHeaderGroup());
     this.items.push(this.createFooterGroup());
     this.items.push(this.createGridGroup());
@@ -119,6 +120,20 @@ export class DefaultThemeModel implements ThemeModel {
       this.createColorItem('grid', 'Grid Border Color', '--grid-border-color'),
       this.createColorItem('grid', 'Grid Header Color', '--grid-header-color'),
       this.createColorItem('grid', 'Grid Header Border', '--grid-header-border-color')
+    ];
+    return ret;
+  }
+
+  private createToolbarGroup(): ThemeGroup {
+    let ret = new ThemeGroup();
+    ret.description = "Main Toolbar";
+    ret.items = [
+      // Toolbar Colors
+      this.createColorItem('mainToolbar', 'Background', '--nav-background-color'),
+      this.createColorItem('mainToolbar', 'Border', '--nav-border-color'),
+      this.createColorItem('mainToolbar', 'Color', '--nav-color'),
+      this.createColorItem('mainToolbar', 'Background Hover', '--nav-hover-background-color'),
+      this.createColorItem('mainToolbar', 'Color Hover', '--nav-hover-color'),
     ];
     return ret;
   }
