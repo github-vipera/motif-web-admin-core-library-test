@@ -3,8 +3,6 @@ import { Component, ViewEncapsulation, ViewChild, Output, Input, ElementRef } fr
 import { ColorEvent, Color,  RGBA } from 'ngx-color';
 import * as __color_string from 'color-string';
 import { ThemeColorItem } from '../../ThemeModel';
-//import { ChromeComponent } from 'ngx-color/chrome/chrome.component//';
-
 
 const colorString = __color_string;
 
@@ -108,5 +106,21 @@ export class WAThemeDesignerColorPicker {
     this.overlayPanel.hide();
   }
 
+
+  public clipboardCopy(){
+    console.log("clipboardCopy called");
+  }
+
+  public clipboardPaste(){
+    console.log("clipboardCopy called");
+  }
+
+  onPickerCopyButtonClick(event){
+    //TODO!!
+  }
+
+  onPickerPasteButtonClick(event){
+    //TODO!!
+  }
 
 }
