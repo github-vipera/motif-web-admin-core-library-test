@@ -72,6 +72,7 @@ export class DefaultThemeModel implements ThemeModel {
     this.items.push(this.createHeaderGroup());
     this.items.push(this.createFooterGroup());
     this.items.push(this.createGridGroup());
+    this.items.push(this.createTabsGroup());
   }
 
   private createMainGroup(): ThemeGroup {
@@ -138,7 +139,20 @@ export class DefaultThemeModel implements ThemeModel {
       this.createColorItem('mainToolbar', 'Border', '--nav-border-color', '$nav_a_a_border_color'),
       this.createColorItem('mainToolbar', 'Color', '--nav-color', '$nav_color'),
       this.createColorItem('mainToolbar', 'Background Hover', '--nav-hover-background-color','$nav_hover_background_color'),
-      this.createColorItem('mainToolbar', 'Color Hover', '--nav-hover-color','$nav_hover_color'),
+      this.createColorItem('mainToolbar', 'Color Hover', '--nav-hover-color','$nav_hover_color')
+    ];
+    return ret;
+  }
+
+  private createTabsGroup(): ThemeGroup {
+    let ret = new ThemeGroup();
+    ret.description = "Tabs";
+    ret.items = [
+      // Toolbar Colors
+      this.createColorItem('tabs', 'Background', '--tab-background-color', '$tab_background_color'),
+      this.createColorItem('tabs', 'Color', '--tab-color', '$tab_color'),
+      this.createColorItem('tabs', 'Selected Background', '--tab-selected-background-color', '$tab_selected_background_color'),
+      this.createColorItem('tabs', 'Selected Color', '--tab-selected-color', '$tab_selected_color'),
     ];
     return ret;
   }
