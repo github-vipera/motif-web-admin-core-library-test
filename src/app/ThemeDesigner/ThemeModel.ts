@@ -73,6 +73,7 @@ export class DefaultThemeModel implements ThemeModel {
     this.items.push(this.createFooterGroup());
     this.items.push(this.createGridGroup());
     this.items.push(this.createTabsGroup());
+    this.items.push(this.createButtonsGroup());
   }
 
   private createMainGroup(): ThemeGroup {
@@ -153,6 +154,25 @@ export class DefaultThemeModel implements ThemeModel {
       this.createColorItem('tabs', 'Color', '--tab-color', '$tab_color'),
       this.createColorItem('tabs', 'Selected Background', '--tab-selected-background-color', '$tab_selected_background_color'),
       this.createColorItem('tabs', 'Selected Color', '--tab-selected-color', '$tab_selected_color'),
+    ];
+    return ret;
+  }
+
+
+  private createButtonsGroup(): ThemeGroup {
+    let ret = new ThemeGroup();
+    ret.description = "Buttons";
+    ret.items = [
+      // Toolbar Colors
+      this.createColorItem('tabs', 'Background', '--button-background-color', '$button_background_color'),
+      this.createColorItem('tabs', 'Color', '--button-color', '$button_color'),
+      this.createColorItem('tabs', 'Border', '--button-border-color', '$button_border_color'),
+      this.createColorItem('tabs', 'Hover Background', '--button-hover-background-color', '$button_hover_background_color'),
+      this.createColorItem('tabs', 'Hover Color', '--button-hover-color', '$button_hover_color'),
+      this.createColorItem('tabs', 'Hover Border', '--button-hover-border-color', '$button_hover_border_color'),
+      this.createColorItem('tabs', 'Disabled Background', '--button-disabled-background-color', '$button_disabled_background_color'),
+      this.createColorItem('tabs', 'Disabled Color', '--button-disabled-color', '$button_disabled_color'),
+      this.createColorItem('tabs', 'Disabled Border', '--button-disabled-border-color', '$button_disabled_border_color')
     ];
     return ret;
   }
