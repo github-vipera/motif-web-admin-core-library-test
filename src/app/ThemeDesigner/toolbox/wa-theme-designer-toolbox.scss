@@ -98,3 +98,17 @@ p-dialog .ui-dialog {
 .wa-theme-editor-toolbox-accordion {
   flex-grow: 1;
 }
+
+.wa-theme-editor-color-picker-control-hidden-input {
+  width: 0px;
+    height: 0px;
+    position: absolute;
+    left: -100x;
+    top: -100px;
+    opacity: 0;
+}
+
+
+.wa-theme-editor-color-picker-overlay input {
+  background: #ddd !important;
+}

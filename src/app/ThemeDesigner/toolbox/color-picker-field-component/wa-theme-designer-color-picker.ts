@@ -1,12 +1,18 @@
 import { WAThemeDesignerClipboardService } from './../WAThemeDesignerClipboardService';
 import { CSSColorHelper } from './helpers/CSSColorHelper';
-import { Component, ViewEncapsulation, ViewChild, Output, Input, ElementRef } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, Output, Input, ElementRef, EventEmitter } from '@angular/core';
 import { ColorEvent, Color,  RGBA } from 'ngx-color';
 import * as __color_string from 'color-string';
 import { ThemeColorItem } from '../../ThemeModel';
 
 const colorString = __color_string;
 
+export interface WAThemeDesignerColorPickerEvent {
+  colorItem: ThemeColorItem,
+  picker: WAThemeDesignerColorPicker,
+  sourceEvent: any,
+  target: ElementRef
+}
 
 @Component({
   selector: 'wa-theme-designer-color-picker',
@@ -16,16 +22,15 @@ const colorString = __color_string;
 })
 export class WAThemeDesignerColorPicker {
 
-  colorRaw: Color;
+  private _colorRaw: Color;
 
   @Input() label:string;
+  @Input() colorItem: ThemeColorItem;
 
-  @ViewChild("op") overlayPanel: any;
   @ViewChild("pickerButton") pickerButton:ElementRef;
   @ViewChild("colorPanel") colorPanel:any;
-  @ViewChild("hiddenInput") hiddenInput:ElementRef;
 
-  @Input() colorItem: ThemeColorItem;
+  @Output() pickerButtonClick:EventEmitter<WAThemeDesignerColorPickerEvent> = new EventEmitter<WAThemeDesignerColorPickerEvent>();
 
   constructor(private clipboardService: WAThemeDesignerClipboardService){
   }
@@ -37,8 +42,12 @@ export class WAThemeDesignerColorPicker {
   ngOnDestroy() {
   }
 
-  handleChange($event: ColorEvent) {
-    this.colorRaw = $event.color;
+  public get colorRaw(): Color {
+    return this._colorRaw;
+  }
+
+  public set colorRaw(value: Color){
+    this._colorRaw = value;
     this.fireChanges();
   }
 
@@ -90,22 +99,21 @@ export class WAThemeDesignerColorPicker {
   }
 
   onInputDblClick(event){
-    this.showPickerOverlay(event);
+    this.emitPickerEvent(event);
   }
 
   onPickerButtonClick(event){
-    this.showPickerOverlay(event);
+    this.emitPickerEvent(event);
   }
 
-  private showPickerOverlay(event){
-    this.hiddenInput.nativeElement.focus();
-    this.overlayPanel.show(event, this.pickerButton.nativeElement);
+  private emitPickerEvent(event){
+    this.pickerButtonClick.emit({
+      colorItem: this.colorItem,
+      picker: this,
+      sourceEvent: event,
+      target: this.pickerButton
+    });
   }
-
-  onHiddenInputBlur(event){
-    this.overlayPanel.hide();
-  }
-
 
   public clipboardCopy(){
     console.log("clipboardCopy called");

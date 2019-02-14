@@ -3,7 +3,7 @@ import { WAThemeDesignerColorPickerInputField } from './toolbox/color-picker-fie
 import { CommonModule } from '@angular/common';
 import { CheckboardComponent } from './toolbox/color-picker-field-component/checkboard/checkboard.component';
 import { WAThemeDesignerColorPicker } from './toolbox/color-picker-field-component/wa-theme-designer-color-picker';
-import { WAThemeDesignerToolbox } from './toolbox/WAThemeDesignerToolbox';
+import { WAThemeDesignerToolbox } from './toolbox/wa-theme-designer-toolbox';
 import { WAThemeDesignerService } from './WAThemeDesignerService';
 import { NgModule } from '@angular/core';
 import { LoggerModule } from 'ngx-logger'

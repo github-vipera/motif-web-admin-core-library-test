@@ -1,7 +1,9 @@
-import { DefaultThemeModel, ThemeModelBuilder, ThemeModel } from './../ThemeModel';
-import { Component, Input, ViewEncapsulation, Inject } from '@angular/core';
+import { Color, ColorEvent } from 'ngx-color';
+import { DefaultThemeModel, ThemeModelBuilder, ThemeModel } from '../ThemeModel';
+import { Component, Input, ViewEncapsulation, Inject, ViewChild, ElementRef } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 import { DOCUMENT } from '@angular/common';
+import { WAThemeDesignerColorPickerEvent } from './color-picker-field-component/wa-theme-designer-color-picker';
 
 
 @Component({
@@ -16,10 +18,16 @@ export class WAThemeDesignerToolbox {
   display = true;
   myClassName = "wa-theme-editor-toolbox";
 
-  @Input() themeModel: ThemeModel;// = new ThemeModelBuilder().createModel();
+  // Current editing item
+  public currentEditingColor: string;
+  _currentEditingItemEvent: WAThemeDesignerColorPickerEvent;
+
+  @Input() themeModel: ThemeModel;
+
+  @ViewChild("op") overlayPanel: any;
+  @ViewChild("hiddenInput") hiddenInput:ElementRef;
 
   constructor(private logger: NGXLogger, @Inject(DOCUMENT) private document: any){
-
   }
 
   ngOnInit() {
@@ -51,5 +59,19 @@ export class WAThemeDesignerToolbox {
     }
   }
 
+  handlePickerColorChange(event: ColorEvent){
+    this._currentEditingItemEvent.picker.colorRaw = event.color;
+  }
+
+  onPickerButtonClick(event:WAThemeDesignerColorPickerEvent){
+    this.currentEditingColor = event.picker.color;
+    this._currentEditingItemEvent = event;
+    this.hiddenInput.nativeElement.focus();
+    this.overlayPanel.show(this._currentEditingItemEvent.sourceEvent, this._currentEditingItemEvent.target.nativeElement);
+  }
+
+  onHiddenInputBlur(event){
+    this.overlayPanel.hide();
+  }
 
 }

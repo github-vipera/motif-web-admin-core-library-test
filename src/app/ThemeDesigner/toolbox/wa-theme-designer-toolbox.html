@@ -8,7 +8,7 @@
           <p-accordionTab *ngFor="let item of themeModel.items"  header="{{item.description}}">
 
               <div *ngFor="let colorItem of item.items"  class="wa-theme-designer-toolbox-item" >
-                  <wa-theme-designer-color-picker [colorItem]="colorItem" [label]="colorItem.description" [color]="colorItem.value" style="width:150px;"></wa-theme-designer-color-picker>
+                  <wa-theme-designer-color-picker [colorItem]="colorItem" [label]="colorItem.description" [color]="colorItem.value" style="width:150px;" (pickerButtonClick)="onPickerButtonClick($event)"></wa-theme-designer-color-picker>
               </div>
 
           </p-accordionTab>
@@ -22,6 +22,17 @@
       </div>
 
   </p-dialog>
+
+<p-overlayPanel appendTo="body" #op
+                  [style]="{padding:'0px'}"
+                  [dismissable]="false"
+                  [showCloseIcon]="true"
+                  [styleClass]="'wa-theme-editor-color-picker-overlay'"
+                  >
+    <color-chrome #colorPanel [color]="currentEditingColor" (onChange)="handlePickerColorChange($event)"></color-chrome>
+</p-overlayPanel>
+
+<input readonly type="text" #hiddenInput (blur)="onHiddenInputBlur($event)" class="wa-theme-editor-color-picker-control-hidden-input">
 
        <!--
           <p-accordionTab header="Header 1">

@@ -1,4 +1,4 @@
-import { WAThemeDesignerToolbox } from './toolbox/WAThemeDesignerToolbox';
+import { WAThemeDesignerToolbox } from './toolbox/wa-theme-designer-toolbox';
 import { ThemeModelBuilder, ThemeModel, ThemeItem, ThemeGroup, ThemeColorItem } from './ThemeModel';
 import { Injectable, Inject, Injector, ApplicationRef, ComponentFactoryResolver } from '@angular/core';
 import { NGXLogger } from 'web-console-core';
