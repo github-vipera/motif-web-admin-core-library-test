@@ -74,6 +74,7 @@ export class DefaultThemeModel implements ThemeModel {
     this.items.push(this.createGridGroup());
     this.items.push(this.createTabsGroup());
     this.items.push(this.createButtonsGroup());
+    this.items.push(this.createComboboxGroup());
   }
 
   private createMainGroup(): ThemeGroup {
@@ -164,15 +165,30 @@ export class DefaultThemeModel implements ThemeModel {
     ret.description = "Buttons";
     ret.items = [
       // Toolbar Colors
-      this.createColorItem('tabs', 'Background', '--button-background-color', '$button_background_color'),
-      this.createColorItem('tabs', 'Color', '--button-color', '$button_color'),
-      this.createColorItem('tabs', 'Border', '--button-border-color', '$button_border_color'),
-      this.createColorItem('tabs', 'Hover Background', '--button-hover-background-color', '$button_hover_background_color'),
-      this.createColorItem('tabs', 'Hover Color', '--button-hover-color', '$button_hover_color'),
-      this.createColorItem('tabs', 'Hover Border', '--button-hover-border-color', '$button_hover_border_color'),
-      this.createColorItem('tabs', 'Disabled Background', '--button-disabled-background-color', '$button_disabled_background_color'),
-      this.createColorItem('tabs', 'Disabled Color', '--button-disabled-color', '$button_disabled_color'),
-      this.createColorItem('tabs', 'Disabled Border', '--button-disabled-border-color', '$button_disabled_border_color')
+      this.createColorItem('buttons', 'Background', '--button-background-color', '$button_background_color'),
+      this.createColorItem('buttons', 'Color', '--button-color', '$button_color'),
+      this.createColorItem('buttons', 'Border', '--button-border-color', '$button_border_color'),
+      this.createColorItem('buttons', 'Hover Background', '--button-hover-background-color', '$button_hover_background_color'),
+      this.createColorItem('buttons', 'Hover Color', '--button-hover-color', '$button_hover_color'),
+      this.createColorItem('buttons', 'Hover Border', '--button-hover-border-color', '$button_hover_border_color'),
+      this.createColorItem('buttons', 'Disabled Background', '--button-disabled-background-color', '$button_disabled_background_color'),
+      this.createColorItem('buttons', 'Disabled Color', '--button-disabled-color', '$button_disabled_color'),
+      this.createColorItem('buttons', 'Disabled Border', '--button-disabled-border-color', '$button_disabled_border_color')
+    ];
+    return ret;
+  }
+
+  private createComboboxGroup(): ThemeGroup {
+    let ret = new ThemeGroup();
+    ret.description = "Comboboxes";
+    ret.items = [
+      // Toolbar Colors
+      this.createColorItem('combobox', 'Background', '--combobox-background-color', '$combobox_background_color'),
+      this.createColorItem('combobox', 'Color', '--combobox-color', '$combobox_color'),
+      this.createColorItem('combobox', 'Selection Background', '--combobox-selected-item-background-color', '$combobox_selected_item_background_color'),
+      this.createColorItem('combobox', 'Selection Color', '--combobox-selected-item-color', '$combobox_selected_item_color'),
+      this.createColorItem('combobox', 'Button Background', '--combobox-button-background-color', '$combobox_button_background_color'),
+      this.createColorItem('combobox', 'Button Color', '--combobox-button-color', '$combobox_button_color')
     ];
     return ret;
   }

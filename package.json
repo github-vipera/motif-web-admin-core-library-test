@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^7.2.4",
-    "@angular/cdk": "^7.3.1",
+    "@angular/cdk": "^7.3.2",
     "@angular/common": "^7.2.4",
     "@angular/compiler": "^7.2.4",
     "@angular/core": "^7.2.4",
@@ -26,7 +26,7 @@
     "controlkit": "^0.1.9",
     "core-js": "^2.6.4",
     "dat.gui": "^0.7.5",
-    "motif-web-admin-core": "0.0.13",
+    "motif-web-admin-core": "0.0.15",
     "ngx-color": "^2.0.5",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
