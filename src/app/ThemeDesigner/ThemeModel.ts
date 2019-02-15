@@ -75,6 +75,7 @@ export class DefaultThemeModel implements ThemeModel {
     this.items.push(this.createTabsGroup());
     this.items.push(this.createButtonsGroup());
     this.items.push(this.createComboboxGroup());
+    this.items.push(this.createInputGroup());
   }
 
   private createMainGroup(): ThemeGroup {
@@ -192,6 +193,20 @@ export class DefaultThemeModel implements ThemeModel {
     ];
     return ret;
   }
+
+  private createInputGroup(): ThemeGroup {
+    let ret = new ThemeGroup();
+    ret.description = "Input";
+    ret.items = [
+      // Toolbar Colors
+      this.createColorItem('input', 'Background', '--input-background-color', '$input_background_color'),
+      this.createColorItem('input', 'Color', '--input-color', '$input_color'),
+      this.createColorItem('input', 'Placeholder Color', '--input-placeholder-color', '$input_placeholder_color'),
+      this.createColorItem('input', 'Border Color', '--input-border-color', '$input_border_color')
+    ];
+    return ret;
+  }
+
 
   public exportTheme(): string {
     let retStr = "";
