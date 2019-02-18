@@ -127,11 +127,12 @@ export class DefaultThemeModel implements ThemeModel {
       this.createColorItem('grid', 'Grid Header Color', '--grid-header-color', '$grid_header_color'),
       this.createColorItem('grid', 'Grid Header Border', '--grid-header-border-color', '$grid_header_border_color'),
       this.createColorItem('grid', 'Grid Hover Backgorund', '--grid-row-hover-background-color', '$grid_tr_hover_background_color'),
-      this.createColorItem('grid', 'Grid Hover Color', '--grid-row-hover-color', '$grid_tr_hover_color')
+      this.createColorItem('grid', 'Grid Hover Color', '--grid-row-hover-color', '$grid_tr_hover_color'),
+      this.createColorItem('grid', 'Grid Selected Background Color', '--grid-row-selected-background-color', '$grid_selected_row_color'),
+      this.createColorItem('grid', 'Grid Selected Color', '--grid-row-selected-color', '$grid_selected_row')
     ];
     return ret;
   }
-
 
   private createToolbarGroup(): ThemeGroup {
     let ret = new ThemeGroup();
@@ -202,7 +203,9 @@ export class DefaultThemeModel implements ThemeModel {
       this.createColorItem('input', 'Background', '--input-background-color', '$input_background_color'),
       this.createColorItem('input', 'Color', '--input-color', '$input_color'),
       this.createColorItem('input', 'Placeholder Color', '--input-placeholder-color', '$input_placeholder_color'),
-      this.createColorItem('input', 'Border Color', '--input-border-color', '$input_border_color')
+      this.createColorItem('input', 'Border Color', '--input-border-color', '$input_border_color'),
+      this.createColorItem('input', 'Focus Background', '--input-focus-background-color', '$input_focus_background_color'),
+      this.createColorItem('input', 'Focus Color', '--input-focus-color', '$input_focus_color')
     ];
     return ret;
   }
