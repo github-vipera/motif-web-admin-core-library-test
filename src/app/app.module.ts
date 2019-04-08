@@ -27,7 +27,8 @@ import { UtilitiesSectionModule } from 'motif-web-admin-core';
 import { CountersAndThresholdsSectionModule } from 'motif-web-admin-core';
 import { TopMenuComponentModule } from 'motif-web-admin-core';
 import { WebContentSectionModule } from 'motif-web-admin-core';
-import { WAThemeDesignerModule } from './ThemeDesigner';
+import { WAThemeDesignerModule } from 'motif-web-admin-core';
+//import { MemoryLeakSectionModule } from 'motif-web-admin-core';
 
 
 const LoggerModuleConfigured = LoggerModule.forRoot({
@@ -73,8 +74,8 @@ const appRoutes: Routes = [
     CountersAndThresholdsSectionModule,
     TopMenuComponentModule,
     WebContentSectionModule,
-    WAThemeDesignerModule
-    /*,MemoryLeakSectionModule*/
+    WAThemeDesignerModule/*,
+    MemoryLeakSectionModule*/
   ],
   providers: [
     { provide: WC_API_BASE_PATH, useValue: environment.API_BASE_PATH },

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WCTopBarService, WCTopBarItem, AuthService } from 'web-console-core';
 import { TopMenuComponent } from 'motif-web-admin-core';
-import { WAThemeDesignerService } from './ThemeDesigner/WAThemeDesignerService';
+import { WAThemeDesignerService } from 'motif-web-admin-core';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.topBarService.registerItem(new WCTopBarItem('mainMenu', TopMenuComponent));
-    this.themeEditorService.show();
+    //this.themeEditorService.show();
   }
 
 
