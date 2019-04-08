@@ -28,8 +28,8 @@ import { CountersAndThresholdsSectionModule } from 'motif-web-admin-core';
 import { TopMenuComponentModule } from 'motif-web-admin-core';
 import { WebContentSectionModule } from 'motif-web-admin-core';
 import { WAThemeDesignerModule } from 'motif-web-admin-core';
-//import { MemoryLeakSectionModule } from 'motif-web-admin-core';
-
+import { RESTManagerSectionModule } from 'motif-web-admin-core';
+import { WebAdminCommonServicesModule } from 'motif-web-admin-core';
 
 const LoggerModuleConfigured = LoggerModule.forRoot({
   level: (environment.production ? NgxLoggerLevel.OFF : NgxLoggerLevel.DEBUG),
@@ -60,6 +60,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     WebConsoleCoreModule,
     DateInputsModule,
+    WebAdminCommonServicesModule,
     ConfigurationSectionModule,
     OAuth2SectionModule,
     SessionsSectionModule,
@@ -74,6 +75,7 @@ const appRoutes: Routes = [
     CountersAndThresholdsSectionModule,
     TopMenuComponentModule,
     WebContentSectionModule,
+    RESTManagerSectionModule,
     WAThemeDesignerModule/*,
     MemoryLeakSectionModule*/
   ],
